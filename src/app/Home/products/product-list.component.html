@@ -12,6 +12,7 @@
         <h4>Filtered by:{{ listFilter }}</h4>
       </div>
     </div>
+
     <div class="table responsive">
       <table class="table" *ngIf="products.length">
         <thead>
@@ -24,25 +25,29 @@
             <th>Product</th>
             <th>Code</th>
             <th>Available Since</th>
-            <th>Price</th>
-            <th>Rating</th>
+            <th>Price Starts At:</th>
+            <th>Ratings</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of filteredProducts">
             <td>
               <img
                 *ngIf="showImage"
                 [src]="product.imageUrl"
-                [title]="product.productname"
+                [title]="product.productName"
                 [style.width.px]="imageWidth"
                 [style.margin.px]="imageMargin"
               />
             </td>
             <td>{{ product.productName }}</td>
-            <td>{{ product.productCode | lowercase }}</td>
+            <td>
+              {{ product.productCode | lowercase | convertToSpaces: "-" }}
+            </td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price | currency: "GBP":"symbol":"1.2-2" }}</td>
+            <td>
+              {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
+            </td>
             <td>{{ product.starRating }}</td>
           </tr>
         </tbody>

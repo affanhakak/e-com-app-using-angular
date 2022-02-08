@@ -1,68 +1,93 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from './products';
 
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   pageTitle = 'Product list';
-  imageWidth = 150;
-  imageMargin = 4;
+  imageWidth = 200;
+  imageMargin = 2;
   showImage: boolean = false;
-  listFilter: string = 'cart';
-  products: any[] = [
+
+  private _listFilter: string = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    console.log('In setter:', value);
+    this.filteredProducts = this.performFilter(value);
+  }
+
+  filteredProducts: IProduct[] = [];
+  products: IProduct[] = [
     {
       productId: 1,
-      productName: 'Sweaters',
+      productName: 'Electronics Store',
       productCode: 'ABC-001',
-      releaseDate: 'March 2022',
-      description: 'A woolen sweater by Nike',
-      price: 32.99,
+      releaseDate: 'March 2020',
+      description: 'Mobile Phones, Laptops and all Electronic Accessories',
+      priceStartsAt: 249.99,
       starRating: 4.5,
-      imageUrl: 'assets/images/sweater.jpg',
+      imageUrl: 'assets/images/electronics.jpg',
     },
     {
       productId: 2,
-      productName: 'Jeans',
+      productName: 'Fashion Store for Men',
       productCode: 'DEF-002',
-      releaseDate: 'May 2022',
-      description: 'Washed Jeans by US-Polo',
-      price: 20.99,
+      releaseDate: 'May 2020',
+      description: 'Jeans, Shirts, Sweat Shirts and grooming items',
+      priceStartsAt: 25.99,
       starRating: 4.8,
-      imageUrl: 'assets/images/jeans.jpg',
+      imageUrl: 'assets/images/men.jpg',
     },
     {
       productId: 3,
-      productName: 'Long Coats',
+      productName: 'Fashion Store for Women',
       productCode: 'GHI-003',
-      releaseDate: 'July 2022',
-      description: 'Long coat by Madame',
-      price: 39.99,
+      releaseDate: 'May 2020',
+      description: 'Jeans, Shirts, Coats and beauty items',
+      priceStartsAt: 39.99,
       starRating: 4.0,
-      imageUrl: 'assets/images/coat.jpg',
+      imageUrl: 'assets/images/women.jpg',
     },
     {
       productId: 4,
-      productName: 'Shoes',
+      productName: 'Groceries Store',
       productCode: 'JKL-004',
-      releaseDate: 'September 2022',
-      description: 'Shoes by Nike Air',
-      price: 25.99,
+      releaseDate: 'September 2020',
+      description: 'All of you day to day grocery items',
+      priceStartsAt: 12.99,
       starRating: 4.6,
-      imageUrl: 'assets/images/shoes.jpg',
+      imageUrl: 'assets/images/groceries.jpg',
     },
     {
       productId: 5,
-      productName: 'Sweat Shirts',
+      productName: 'Kids Section',
       productCode: 'MNO-005',
-      releaseDate: 'November 2022',
-      description: 'Sweat Shirts by UCB',
-      price: 18.99,
+      releaseDate: 'November 2020',
+      description: 'Toys, clothing etc for kids',
+      priceStartsAt: 18.99,
       starRating: 4.9,
-      imageUrl: 'assets/images/sweatshirt.jpg',
+      imageUrl: 'assets/images/kids.jpg',
     },
   ];
+
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) =>
+      product.productName.toLocaleLowerCase().includes(filterBy)
+    );
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  ngOnInit(): void {
+    console.log('In OnInit');
   }
 }
