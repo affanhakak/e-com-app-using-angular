@@ -10,22 +10,17 @@ import { ProductService } from './product.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  pageTitle: string = 'Product-Detail';
-  product: IProduct | undefined;
-  products: IProduct[] = [];
-
+  pageTitle = '';
+  product?: IProduct;
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.pageTitle += `: ${id}`;
-  }
-  onBack(): void {
-    this.router.navigate(['/products']);
+    this.activatedRoute.params.subscribe((param) => {
+      const id = param['id'];
+      this.product = this.productService.getProductById(+id);
+    });
   }
 }

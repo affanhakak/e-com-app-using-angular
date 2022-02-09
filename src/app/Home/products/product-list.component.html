@@ -12,61 +12,55 @@
         <h4>Filtered by:{{ listFilter }}</h4>
       </div>
     </div>
-
-    <div class="table responsive">
-      <table class="table" *ngIf="products.length">
-        <thead>
-          <tr>
-            <th>
-              <button class="btn btn-primary" (click)="toggleImage()">
-                {{ showImage ? "Hide" : "Show" }} Image
-              </button>
-            </th>
-            <th>Product</th>
-            <th>Code</th>
-            <th>Available Since</th>
-            <th>Price Starts At:</th>
-            <th>Ratings</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of filteredProducts">
-            <td>
-              <img
-                *ngIf="showImage"
-                [src]="product.imageUrl"
-                [title]="product.productName"
-                [style.width.px]="imageWidth"
-                [style.margin.px]="imageMargin"
-              />
-            </td>
-
-            <td>
-              <a [routerLink]="['/products', product.productId]">
-                {{ product.productName }}
-              </a>
-            </td>
-            <td>
-              <a>
-                {{ product.productCode | lowercase | convertToSpaces: "-" }}
-              </a>
-            </td>
-            <td>
-              <a>
-                {{ product.releaseDate }}
-              </a>
-            </td>
-            <td>
-              <a>
-                {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
-              </a>
-            </td>
-            <td>
-              <pm-star [rating]="product.starRating"></pm-star>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
+</div>
+<hr />
+<div>
+  <div id="pol" *ngIf="products.length">
+    <div
+      class="card"
+      *ngFor="let product of filteredProducts"
+      style="width: 22rem"
+    >
+      <img
+        id="img"
+        class="card-img-top"
+        [src]="product.imageUrl"
+        [title]="product.productName"
+      />
+      <div class="card-body">
+        <a class="mk" [routerLink]="['/products', product.productId]">
+          {{ product.productName }}
+        </a>
+        <hr />
+        <p class="card-text">
+          {{ product.description }}
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a>
+            Product Code :
+            {{ product.productCode | lowercase | convertToSpaces: "-" }}
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a> Release date : {{ product.releaseDate }} </a>
+        </li>
+        <li class="list-group-item">
+          <a>
+            Product price :
+            {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
+          </a>
+        </li>
+      </ul>
+      <li class="list-group-item">
+        <pm-star [rating]="product.starRating"></pm-star>
+      </li>
+      <div class="card-body">
+        <a class="btn btn-info">Add to cart</a>
+        <a class="btn btn-light">Item Details</a>
+      </div>
     </div>
   </div>
 </div>

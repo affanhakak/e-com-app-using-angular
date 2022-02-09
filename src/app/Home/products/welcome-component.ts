@@ -7,5 +7,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   styleUrls: ['./welcome-component.css'],
 })
 export class WelcomeComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private routerModule: RouterModule
+  ) {}
 }

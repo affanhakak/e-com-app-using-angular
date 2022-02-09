@@ -1,11 +1,26 @@
-thead {
+.list-group-item {
   color: #337ab7;
 }
 
-img {
-  height: 200px;
+.mk {
+  text-decoration: none;
+  font-size: 25px;
 }
 
-a {
-  text-decoration: none;
+p {
+  font-size: 20px;
+  font-family: poppins;
+  color: black;
+}
+
+#img {
+  height: 300px;
+  width: 300px;
+  margin: 25px;
+}
+
+#pol {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }

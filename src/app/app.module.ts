@@ -13,6 +13,8 @@ import { WelcomeComponent } from './Home/products/welcome-component';
 import { ProductService } from './Home/products/product.service';
 import { ConvertToSpacesPipe } from './Shared/convert-to-spaces.pipe';
 import { ProductDetailGuard } from './products/product-detail.guard';
+import { CartComponent } from './cart/cart.component';
+import { LowerCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ProductDetailGuard } from './products/product-detail.guard';
     StarComponent,
     ProductDetailsComponent,
     WelcomeComponent,
+    CartComponent,
+    ConvertToSpacesPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { ProductDetailGuard } from './products/product-detail.guard';
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: 'cart', component: CartComponent },
     ]),
   ],
   providers: [ProductService],

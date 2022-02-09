@@ -7,10 +7,7 @@ import { IProduct } from './products';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  pageTitle = 'Our Stores';
-  imageWidth = 200;
-  imageMargin = 2;
-  showImage: boolean = false;
+  pageTitle = 'Our Products';
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -32,10 +29,6 @@ export class ProductListComponent implements OnInit {
     return this.products.filter((product: IProduct) =>
       product.productName.toLocaleLowerCase().includes(filterBy)
     );
-  }
-
-  toggleImage(): void {
-    this.showImage = !this.showImage;
   }
 
   ngOnInit(): void {
