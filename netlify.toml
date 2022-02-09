@@ -1,8 +1,10 @@
 # example netlify.toml
 [build]
   command = "ng build"
-  functions = "netlify/functions"
-  publish = "dist"
+  commandOrigin: "config"
+  publish: "/opt/build/repo/dist"
+   publishOrigin: "config"
+   functionsDirectory: "/opt/build/repo/netlify/functions"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
