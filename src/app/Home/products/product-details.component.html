@@ -1,42 +1,42 @@
-<div *ngIf="product">
-  <div id="pol">
-    <div class="card" style="width: 22rem">
-      <img
-        id="img"
-        class="card-img-top"
-        [src]="product.imageUrl"
-        [title]="product.productName"
-      />
-      <div class="card-body">
-        <a class="mk">
-          {{ product.productName }}
-        </a>
-        <hr />
-        <p class="card-text">
-          {{ product.description }}
-        </p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <a>
-            Product Code :
-            {{ product.productCode | lowercase | convertToSpaces: "-" }}
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a> Release date : {{ product.releaseDate }} </a>
-        </li>
-        <li class="list-group-item">
-          <a>
-            Product price :
-            {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
-          </a>
-        </li>
-      </ul>
-      <li class="list-group-item">
-        <pm-star [rating]="product.starRating"></pm-star>
-      </li>
-      <button class="btn btn-outline-secondary" style="width: 80px">
+<div class="container" *ngIf="product">
+  <div class="row">
+    <img
+      id="img"
+      class="card-img-top"
+      [src]="product.imageUrl"
+      [title]="product.productName"
+    />
+    <hr />
+    <div>
+      <p>
+        Name:
+        {{ product.productName }}
+      </p>
+    </div>
+    <div>
+      <p>
+        Description
+        {{ product.description }}
+      </p>
+    </div>
+    <div>
+      <p>
+        Product Code :
+        {{ product.productCode | lowercase | convertToSpaces: "-" }}
+      </p>
+    </div>
+    <div>
+      <p>Release date : {{ product.releaseDate }}</p>
+    </div>
+    <div>
+      <p>
+        Product price :
+        {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
+      </p>
+    </div>
+
+    <div>
+      <button class="btn btn-info" style="width: 80px">
         <i class="fa fa-chevron-left"></i>Back
       </button>
     </div>
