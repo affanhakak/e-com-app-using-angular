@@ -14,7 +14,7 @@ export class CartService {
   getProducts() {
     return this.products;
   }
-  clearCart() {
+  clearCart(product: IProduct) {
     return this.products;
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -8,13 +9,13 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './Home/products/product-list.component';
 import { StarComponent } from './Shared/star.component';
 import { ProductDetailsComponent } from './Home/products/product-details.component';
-import { WelcomeComponent } from './Home/products/welcome-component';
 
 import { ProductService } from './Home/products/product.service';
 import { ConvertToSpacesPipe } from './Shared/convert-to-spaces.pipe';
 import { ProductDetailGuard } from './products/product-detail.guard';
 import { LowerCasePipe } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,15 @@ import { CartComponent } from './cart/cart.component';
     ConvertToSpacesPipe,
     StarComponent,
     ProductDetailsComponent,
-    WelcomeComponent,
     ConvertToSpacesPipe,
     CartComponent,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductListComponent },
       {
@@ -38,10 +40,10 @@ import { CartComponent } from './cart/cart.component';
         canActivate: [ProductDetailGuard],
         component: ProductDetailsComponent,
       },
-      { path: 'welcome', component: WelcomeComponent },
       { path: 'cart', component: CartComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: 'form', component: FormsComponent },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: '**', redirectTo: 'products', pathMatch: 'full' },
     ]),
   ],
   providers: [ProductService],
