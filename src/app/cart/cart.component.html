@@ -1,3 +1,20 @@
-<div>
-  <p>Hi</p>
+<h1>
+  My cart
+  <button class="btn btn-primary">Clear Cart</button>
+</h1>
+
+<hr />
+
+<div class="card" *ngFor="let product of products" style="width: 18rem">
+  <img id="img" [src]="product.imageUrl" [title]="product.productName" />
+  <div class="card-body">
+    <p class="card-title">Product Name : {{ product.productName }}</p>
+    <p class="card-text">
+      Product price :
+      {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
+    </p>
+    <a [routerLink]="['/products']" class="btn btn-warning" style="width: 80px">
+      Go Back
+    </a>
+  </div>
 </div>

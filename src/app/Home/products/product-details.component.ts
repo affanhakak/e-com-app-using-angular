@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   pageTitle = '';
   product?: IProduct;
   constructor(
+    private router: Router,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute
   ) {}

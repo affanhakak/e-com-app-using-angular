@@ -29,13 +29,9 @@
         [title]="product.productName"
       />
       <div class="card-body">
-        <a class="mk" [routerLink]="['/products', product.productId]">
+        <a class="mk">
           {{ product.productName }}
         </a>
-        <hr />
-        <p class="card-text">
-          {{ product.description }}
-        </p>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -44,22 +40,12 @@
             {{ product.productCode | lowercase | convertToSpaces: "-" }}
           </a>
         </li>
-        <li class="list-group-item">
-          <a> Release date : {{ product.releaseDate }} </a>
-        </li>
-        <li class="list-group-item">
-          <a>
-            Product price :
-            {{ product.priceStartsAt | currency: "GBP":"symbol":"1.2-2" }}
-          </a>
-        </li>
       </ul>
-      <li class="list-group-item">
-        <pm-star [rating]="product.starRating"></pm-star>
-      </li>
       <div class="card-body">
-        <a class="btn btn-info">Add to cart</a>
-        <a class="btn btn-light">Item Details</a>
+        <a (click)="addToCart(product)" class="btn btn-info"> Add to cart </a>
+        <a [routerLink]="['/products', product.productId]" class="btn btn-dark"
+          >Item Details
+        </a>
       </div>
     </div>
   </div>

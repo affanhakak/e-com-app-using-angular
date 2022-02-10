@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
+  selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent {
-  constructor(
-    private routerModule: RouterModule,
-    private activatedRoute: ActivatedRoute
-  ) {}
+export class CartComponent implements OnInit {
+  products = this.cartService.getProducts();
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {}
 }

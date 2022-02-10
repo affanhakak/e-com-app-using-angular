@@ -36,9 +36,12 @@
     </div>
 
     <div>
-      <button class="btn btn-info" style="width: 80px">
-        <i class="fa fa-chevron-left"></i>Back
-      </button>
+      <a [routerLink]="['/products']" class="btn btn-info" style="width: 80px">
+        <i class="fa fa-chevron-left"></i>Go Back
+      </a>
+      <a [routerLink]="['/cart']" class="btn btn-light" style="width: 80px">
+        <i class="fa fa-chevron-right"></i>Go to cart
+      </a>
     </div>
   </div>
 </div>
