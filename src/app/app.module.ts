@@ -15,7 +15,6 @@ import { ConvertToSpacesPipe } from './Shared/convert-to-spaces.pipe';
 import { ProductDetailGuard } from './products/product-detail.guard';
 import { LowerCasePipe } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
-import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { FormsComponent } from './forms/forms.component';
     ProductDetailsComponent,
     ConvertToSpacesPipe,
     CartComponent,
-    FormsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +39,7 @@ import { FormsComponent } from './forms/forms.component';
         component: ProductDetailsComponent,
       },
       { path: 'cart', component: CartComponent },
-      { path: 'form', component: FormsComponent },
+
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: '**', redirectTo: 'products', pathMatch: 'full' },
     ]),
